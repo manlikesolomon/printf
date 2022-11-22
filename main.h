@@ -4,6 +4,12 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+/**
+ * struct formats - struct format
+ * @sym: string
+ * @f: pointer to a function
+ */
+
 typedef struct formats
 {
 	char *sym;
