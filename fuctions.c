@@ -1,0 +1,78 @@
+#include "main.h"
+/**
+ * _char - prints characters
+ * @list: arguments to print
+ * Return: 1 for success
+ */
+
+int _char(va_list list)
+{
+	_putchar(va_arg(list, int));
+	return (1);
+}
+
+/**
+ * _string - prints a string
+ * @list: arguments to print
+ * Return: 1 for success
+ */
+
+int _string(va_list list)
+{
+	int a;
+	char *string;
+
+	string = va_arg(list, char *);
+	if (string == NULL)
+		string = "(null)";
+	for (a = 0; string[a] != '\0'; a++)
+		_putchar(string[a]);
+	return (a);
+}
+
+/**
+ * _percent - print %
+ * @list: arguments to be printed
+ * Return: specific character
+ */
+
+int _percent(__attribute__((unused))va_list list)
+{
+	_putchar('%');
+	return (1);
+}
+
+/**
+ * _integer - prints integer
+ * @list: varibles to print
+ * Return: 1 for success
+ */
+
+int _integer(va_list list)
+{
+	long int num1 = va_arg(list, int), num2;
+	int div = 1, i = 0;
+
+	if (num1 < 0)
+	{
+		_putchar('-');
+		i++;
+		num1 *= -1;
+	}
+	num2 = num1;
+	while (num2 > 9)
+	{
+		div *= 10;
+		num2 = num2 / 10;
+	}
+	while (div >= 1)
+	{
+		num2 = num1 % div;
+		num1 /= div;
+		_putchar(num1 + '0');
+		num1 = num2;
+		div /= 10;
+		i++;
+	}
+	return (1);
+}
